@@ -2,8 +2,8 @@
 %define	filever %(echo v%{version}| tr . -)
 
 Name:		%{oname}-cg-plugin
-Version:	1.7.4
-Release:	2
+Version:	1.8.0
+Release:	1
 Summary:	CgProgramManager plugin for OGRE
 License:	LGPLv2+
 Group:		System/Libraries
@@ -37,10 +37,11 @@ This package contains CgProgramManager plugin for OGRE.
 %install
 %__rm -rf %{buildroot}
 %__mkdir_p %{buildroot}%{_libdir}/OGRE
-%__cp build/lib/Plugin_CgProgramManager.so %{buildroot}%{_libdir}/OGRE/
-
-%clean
-%__rm -rf %{buildroot}
+%__cp build/lib/Plugin_CgProgramManager.so.%{version} %{buildroot}%{_libdir}/OGRE/
+pushd %{buildroot}%{_libdir}/OGRE/
+%__ln_s Plugin_CgProgramManager.so.%{version} Plugin_CgProgramManager.so
+popd
 
 %files
+%{_libdir}/OGRE/Plugin_CgProgramManager.so.%{version}
 %{_libdir}/OGRE/Plugin_CgProgramManager.so

@@ -3,7 +3,7 @@
 
 Name:		%{oname}-cg-plugin
 Version:	1.8.0
-Release:	2
+Release:	3
 Summary:	CgProgramManager plugin for OGRE
 License:	LGPLv2+
 Group:		System/Libraries
